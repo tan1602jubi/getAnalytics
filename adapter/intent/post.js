@@ -12,7 +12,7 @@ module.exports = {
 	  
 			await PythonShell.run('getinfo.py', options, function (err, results) {
 				if (err) throw err;
-				console.log('results: ');
+				console.log('results: ', results);
 				if (results[0] == "1"){
 					delete(model.stage)
 					resolve(model)
