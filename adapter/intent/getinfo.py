@@ -1,5 +1,6 @@
 import pymongo
 import json
+import sys
 m = pymongo.MongoClient('mongodb+srv://sharedParaRead:k07r4FDUpSedawJ6@sharedparramato-sy1qy.mongodb.net/test?retryWrites=true&w=majority')
 db = m.get_database('shared-parramato')
 
