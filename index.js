@@ -8,7 +8,7 @@ require("parramato").Server({
     adapterPath:"/adapter",
     adapterDirectory:__dirname+"/adapter",
     projectId:"get_analytics_236145124787",
-    dashbotKey:"VxtYPVW6168LIiXwqpIku9wE",
+    // dashbotKey:"VxtYPVW6168LIiXwqpIku9wE",
     directMultiplier:1,
     fallbackMultiplier:0.8,
     passphraseMiddleware:"YGUYGgyjgblgUGIYGIGkwhbiuashbo98u9283hr9h24rqIYGI932kbidbiadsYE",
