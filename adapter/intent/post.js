@@ -1,3 +1,20 @@
-
-        //Jubi AI License https://jubi.bit.ai/pwl/31Lgfu8rU8Hsv3qu for documentation
-        module.exports={}
+module.exports = {
+	getProjectId: (model) => {
+		return new Promise(async function (resolve, reject) {
+			console.log(model.data)
+			resolve(model)
+		})
+	},
+	firstMessage : (model) => {
+		return new Promise(async function (resolve, reject) {
+			console.log(model.data)
+			resolve(model)
+		})
+	},
+	fallbackMessage: (model) => {
+		return new Promise(async function (resolve, reject) {
+			console.log(model.data)
+			resolve(model)
+		})
+	},
+}
