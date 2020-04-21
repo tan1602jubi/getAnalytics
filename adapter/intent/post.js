@@ -14,6 +14,7 @@ module.exports = {
 				if (err) throw err;
 				console.log('results: ', results);
 				if (results[0] == "1"){
+					model.tags.projectId = model.data
 					delete(model.stage)
 					resolve(model)
 				}
@@ -26,6 +27,7 @@ module.exports = {
 	firstMessage : (model) => {
 		return new Promise(async function (resolve, reject) {
 			console.log(model.data)
+			model.tags.firstMessage = model.data
 			delete(model.stage)
 			resolve(model)
 		})
@@ -33,6 +35,7 @@ module.exports = {
 	fallbackMessage: (model) => {
 		return new Promise(async function (resolve, reject) {
 			console.log(model.data)
+			model.tags.fallbackMessage = model.data
 			delete(model.stage)
 			resolve(model)
 		})
