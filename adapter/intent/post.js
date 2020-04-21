@@ -6,7 +6,7 @@ module.exports = {
 			let options = {
 				mode: 'text',
 				pythonOptions: ['-u'],
-				scriptPath: './getinfo.py',//Path to your script
+				scriptPath: './',//Path to your script
 				args: [JSON.stringify({"operation": "chkId", "id": model.data})]
 			};
 	  
