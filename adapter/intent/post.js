@@ -6,7 +6,7 @@ module.exports = {
 			let options = {
 				mode: 'text',
 				pythonOptions: ['-u'],
-				scriptPath: './',//Path to your script
+				scriptPath: './adapter/intent/',//Path to your script
 				args: [JSON.stringify({"operation": "chkId", "id": model.data})]
 			};
 	  
