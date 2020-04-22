@@ -7,7 +7,7 @@ module.exports = {
 			let chk = await helper.runpy({"operation": "chkId", "id": model.data})
 			console.log(chk)
 			if (chk == "1"){
-				delete(model)
+				delete(model.stage)
 				resolve(model)
 			}
 			else{
