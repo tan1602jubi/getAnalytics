@@ -1,15 +1,14 @@
 module.exports={
-	botLink:(model)=>{
+	viewReport:(model)=>{
         return new Promise(function(resolve, reject){
-        console.log("PDFGEN")
             model.reply = {
                 type :"button",
-                text : "Here is you bot analytics url",
+                text : "View Analysis Report",
                 next:{
                     data:[
                         {
                             type:"url",
-                            data: model.tags.botlink,
+                            data: "",
                             text:"Bot Analytics Link"
                         },
                     ]

@@ -1,6 +1,7 @@
 import pymongo
 import json
 import sys
+import cal
 m = pymongo.MongoClient('mongodb+srv://sharedParaRead:k07r4FDUpSedawJ6@sharedparramato-sy1qy.mongodb.net/test?retryWrites=true&w=majority')
 db = m.get_database('shared-parramato')
 
@@ -14,9 +15,10 @@ def getPids(id):
         return "0" 
 
 if __name__ == "__main__":
-
     data = json.loads(sys.argv[1])
     if data["operation"] == "chkId":
         print(getPids(data["id"]))
+    elif data["operation"] == "getAnalysis":
+        print(cal.get_report(data["projectInfo"]))
 
 
