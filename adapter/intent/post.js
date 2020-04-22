@@ -68,10 +68,10 @@ module.exports = {
 					args: [JSON.stringify({"operation": "getAnalysis", "projectInfo": projectInfo})]
 				};
 		  
-				await PythonShell.run('getinfo.py', options, function (err, results) {
+				await PythonShell.run('getinfo.py', options, async function (err, results) {
 					if (err) throw err;
 					console.log('results: ', results);
-					model.tags.report = results[0]
+					model.tags.report = await JSON.parse(results[0])
 					delete(model.stage)
 				})
 
