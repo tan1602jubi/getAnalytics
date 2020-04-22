@@ -70,11 +70,10 @@ module.exports = {
 		  
 				await PythonShell.run('getinfo.py', options, async function (err, results) {
 					if (err) throw err;
-					console.log('results: ', results);
-					model.tags.report = await JSON.parse(results[0])
-					delete(model.stage)
+					console.log('results: ', typeof(results[0]));
+					model.tags.report = await JSON.parse(JSON.stringify(results[0]))
 				})
-
+				delete(model.stage)
 			}
 			else{
 				reject(model)
