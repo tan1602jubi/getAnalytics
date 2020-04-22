@@ -1,7 +1,6 @@
 import pymongo
 import pandas as pd
 import json
-import payments
 from datetime import datetime, timezone, timedelta
 
 def get_macro_info(data, firstMessage, fallbackMessage):
