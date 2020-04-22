@@ -1,28 +1,17 @@
-let {PythonShell} = require('python-shell')
 let Base64 = require('js-base64').Base64;
+let helper = require('../../commonHelper/helper.js')
 module.exports = {
 	getProjectId: (model) => {
 		return new Promise(async function (resolve, reject) {
 			console.log(model.data)
-			let options = {
-				mode: 'text',
-				pythonOptions: ['-u'],
-				scriptPath: './adapter/intent/',
-				args: [JSON.stringify({"operation": "chkId", "id": model.data})]
-			};
-	  
-			await PythonShell.run('getinfo.py', options, function (err, results) {
-				if (err) throw err;
-				console.log('results: ', results);
-				if (results[0] == "1"){
-					model.tags.projectId = model.data
-					delete(model.stage)
-					resolve(model)
-				}
-				else{
-					reject(model)
-				}
-			})
+			let chk = await helper.runpy({"operation": "chkId", "id": model.data})
+			if (chk == "1"){
+				delete(model)
+				resolve(model)
+			}
+			else{
+				reject(model)
+			}			
 		})
 	},
 	firstMessage : (model) => {
@@ -61,25 +50,13 @@ module.exports = {
 						from: from
 					}
 				}
-				let options = {
-					mode: 'text',
-					pythonOptions: ['-u'],
-					scriptPath: './adapter/intent/',
-					args: [JSON.stringify({"operation": "getAnalysis", "projectInfo": projectInfo})]
-				};
-		  
-				await PythonShell.run('getinfo.py', options, async function (err, results) {
-					if (err) throw err;
-					console.log('results: ', typeof(results[0]));
-					model.tags.report = await JSON.parse(JSON.stringify(results[0]))
-				})
-				delete(model.stage)
+				model.tags.report = await helper.runpy({"operation": "getAnalysis", "projectInfo": projectInfo})
+				delete(model)
 			}
 			else{
 				reject(model)
 			}
 			console.log(model.data)
-			model.tags.fallbackMessage = Base64.encode(model.data.trim())
 			delete(model.stage)
 			resolve(model)
 		})
