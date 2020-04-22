@@ -5,6 +5,7 @@ module.exports = {
 		return new Promise(async function (resolve, reject) {
 			console.log(model.data)
 			let chk = await helper.runpy({"operation": "chkId", "id": model.data})
+			console.log(chk)
 			if (chk == "1"){
 				delete(model)
 				resolve(model)
