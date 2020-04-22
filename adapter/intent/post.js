@@ -1,4 +1,5 @@
 let {PythonShell} = require('python-shell')
+let Base64 = require('js-base64').Base64;
 module.exports = {
 	getProjectId: (model) => {
 		return new Promise(async function (resolve, reject) {
@@ -6,7 +7,7 @@ module.exports = {
 			let options = {
 				mode: 'text',
 				pythonOptions: ['-u'],
-				scriptPath: './adapter/intent/',//Path to your script
+				scriptPath: './adapter/intent/',
 				args: [JSON.stringify({"operation": "chkId", "id": model.data})]
 			};
 	  
@@ -27,7 +28,7 @@ module.exports = {
 	firstMessage : (model) => {
 		return new Promise(async function (resolve, reject) {
 			console.log(model.data)
-			model.tags.firstMessage = model.data
+			model.tags.firstMessage = Base64.encode(model.data.trim())
 			delete(model.stage)
 			resolve(model)
 		})
@@ -35,7 +36,7 @@ module.exports = {
 	fallbackMessage: (model) => {
 		return new Promise(async function (resolve, reject) {
 			console.log(model.data)
-			model.tags.fallbackMessage = model.data
+			model.tags.fallbackMessage = Base64.encode(model.data.trim())
 			delete(model.stage)
 			resolve(model)
 		})
